@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="user-registration">
+            <input type="text" id="phone-number" placeholder="Enter your phone number" />
+            <button id="register-btn">Register</button>
+        </div>
+        <div class="custom-file-upload">
+            <button onclick="openWebcam()" id="open-camera-btn">Image reading camera</button>
+            <button id="start-gesture-btn">Hand gesture detection</button>
+          
+            <div id="webcam-container">
+                <video id="webcam" autoplay></video>
+                <div id="outline-box"></div> <!-- Add the outline box -->
+                <canvas id="webcam-canvas" style="display: none;"></canvas>
+                <button id="capture-btn" onclick="captureImage()">Capture</button>
+            </div>
+            <select id="data-type">
+                <option value="textonly">Text Only</option>
+                <option value="numberonly">Numbers Only</option>
+                <option value="card16">16-Digit Card</option>
+                <option value="alphanumeric">Alphanumeric</option>
+            </select>
+                   <!-- Button to trigger suggestion -->
+                   <!-- <button id="suggestions-btn">Provide Suggestions</button> -->
+        </div>
+
+        <div class="chat-box" id="chat-box"></div>
+        <div id="suggestions-box" class="suggestions-box"></div>
+
+
+
+        <form id="chat-form" class="chat-form">
+            <input type="text" id="recipient-input" placeholder="Recipient Phone Number" required />
+            <input type="text" id="message-input" placeholder="Type your message..." required />
+            <button type="submit" class="send-btn">Send</button>
+            <i class="fas fa-microphone" id="mic-icon"></i>
+        </form>
+
+        <div id="sentiment-feedback"></div>
+           <button id="start-head-gesture-btn">Head gesture detection</button>
+
+        <button id="end-chat-btn">END CHAT TO ANALYSE SENTIMENT RESULTS</button>
+    </div>
+    
+    <div id="gesture-output"></div>
+
+    <!-- External Libraries -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script src="chat.js"></script>
+    <script src="hand-gesture.js"></script>
+    <script src="image-reading.js"></script>
+    <script src="suggestions.js"></script>
+    <script src="speech.js"></script>
+    <script src="head-gesture.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sentiment@5.0.0"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
